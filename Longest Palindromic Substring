@@ -1,0 +1,32 @@
+//expend from center of a string. The problem is there are 2n-1 centers. The reason is center can be "" or 
+//one character. For example, "bb" center is "", but "aba" center is a.
+
+class Solution {
+   public String longestPalindrome(String s) {
+        if (s.length()==0) {
+            return "";
+        }
+        int start = 0;
+        int end = 0;
+        for (int i=0; i<s.length(); i++) {
+            int length_1 = expendCenter(s, i, i);
+            int length_2 = expendCenter(s, i, i+1);
+            int length = Math.max(length_1, length_2);
+            if (length > end-start){
+                start = i - (length-1)/2;
+                end = i + length/2;
+            }
+        }
+        return s.substring(start, end+1);
+    }
+   
+    public int expendCenter(String s, int left, int right) {
+        int l = left;
+        int r = right;
+        while (l>=0 && r<s.length() && s.charAt(l)==s.charAt(r)) {
+            l--;
+            r++;
+        }
+        return r-l-1;
+    }
+}
