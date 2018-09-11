@@ -1,0 +1,50 @@
+class Solution {
+    public String convert(String s, int numRows) {
+        if (numRows == 1) {
+            return s;
+        }
+        ArrayList<ArrayList<Character>> matrix = new ArrayList<ArrayList<Character>>();
+        for (int i=0; i<numRows; i++) {
+            ArrayList<Character> temp = new ArrayList<Character>();
+            matrix.add(temp);
+        }
+        int row = 0;
+        int space = -1;
+        boolean up = false;
+        for (int i=0; i<s.length(); i++) {
+            if (row == numRows-1) {
+                up = true;
+            }
+            if (row == 0) {
+                up = false;
+                space = -1;
+            }
+            if (up == false) {
+                ArrayList<Character> temp = matrix.get(row);
+                for (int j=0; j<space; j++){
+                    temp.add(' ');
+                }
+                temp.add(s.charAt(i));
+                row++;
+            } else {
+                ArrayList<Character> temp = matrix.get(row);
+                for (int j=0; j<space; j++){
+                    temp.add(' ');
+                }
+                temp.add(s.charAt(i));
+                row--;
+                space++;
+            }
+        }
+        String sol = "";
+        for (int i=0; i<numRows; i++){
+            ArrayList<Character> temp = matrix.get(i);
+            for (int j=0; j<temp.size(); j++){
+                if (temp.get(j) != ' ') {
+                    sol += temp.get(j);
+                }
+            }
+        }
+        return sol;
+    }
+}
