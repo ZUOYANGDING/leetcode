@@ -1,0 +1,23 @@
+class Solution {
+    public List<String> letterCombinations(String digits) {
+        List<String> re = new ArrayList<>();
+        if (digits.length() == 0){
+            return re;
+        }
+        re.add("");
+        String[] d_map = {"0","1","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+        for (int i=0; i<digits.length(); i++){
+            int index = digits.charAt(i) - '0'; 
+            String temp = d_map[index];
+            List<String> temp_list = new ArrayList<>();
+            for (int j=0; j<temp.length(); j++){
+                for (int k=0; k<re.size(); k++){
+                    String sub = re.get(k) + temp.charAt(j);
+                    temp_list.add(sub);
+                }
+            }
+            re = temp_list;
+        }
+        return re;
+    }
+}
