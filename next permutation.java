@@ -1,3 +1,7 @@
+//for permuataions, the first one will be accend order and the last one will be decend order.
+//Therefore, check elements from end of the array, find the first one that less than previous
+//swap this one with the first element larger than it from the end. Then reverse the order of
+//rest array
 class Solution {
     public void nextPermutation(int[] nums) {
         for (int i=nums.length-2; i>=0; i--){
