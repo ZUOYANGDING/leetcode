@@ -1,3 +1,4 @@
+// use the first row and first col as the mark array.
 class Solution {
     public void setZeroes(int[][] matrix) {
         if (matrix==null) {
