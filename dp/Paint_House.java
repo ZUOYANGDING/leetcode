@@ -1,3 +1,5 @@
+// apply a 2-dim matrix to record the lowest cost until ith house when it's painted by red, blue
+// and green.
 class Solution {
     public int minCost(int[][] costs) {
         if (costs==null || costs.length==0) {
@@ -10,17 +12,10 @@ class Solution {
         }
         for (int i=1; i<row; i++) {
             for (int j=0; j<3; j++) {
-                int min = Integer.MAX_VALUE;
-                for (int k=0; k<3; k++) {
-                    if (k==j) {
-                        continue;
-                    } else {
-                        min = Math.min(min, dp[i-1][k]);
-                    }
-                }
-                dp[i][j] = costs[i][j] + min;
+                dp[i][j] = costs[i][j] + Math.min(dp[i-1][(j+1)%3], dp[i-1][(j+2)%3]);
             }
         }
         return Math.min(dp[row-1][0], Math.min(dp[row-1][1], dp[row-1][2]));
     }
 }
+
