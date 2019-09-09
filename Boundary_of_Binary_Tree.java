@@ -8,7 +8,7 @@
  * }
  */
 
-// travel inorder on left most, then travel to all leaves in this tree, then travel postorder 
+// travel preorder on left most, then travel to all leaves in this tree, then travel postorder 
 // on right most. When travel left, always go left if left exist, else go right. When travel right,
 // always go right if right exist, else go left.
 class Solution {
