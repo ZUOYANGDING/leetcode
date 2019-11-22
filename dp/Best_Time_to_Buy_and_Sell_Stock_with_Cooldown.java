@@ -17,7 +17,7 @@ From the state graph above, we have:
         hold[i] = max(rest[i-1]-price[i], hold[i-1]) (rest today or buy stock today)
         sell[i] = hold[i-1] + price[i] (sell stock today)
 */
-        
+
 class Solution {
     public int maxProfit(int[] prices) {
         if (prices==null || prices.length==0) {
@@ -38,3 +38,4 @@ class Solution {
         return Math.max(rest[l], sell[l]);
     }
 }
+
