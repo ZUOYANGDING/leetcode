@@ -1,0 +1,7 @@
+Problem:
+Given N items, w[i] is the i-th item's weight, and v[i] is the i-th item's value. 
+Given a knapsack with weigth W, maximum the value within W. Items can only be used 1 or 0 times
+
+Algorithm:
+	set dp[i][j] as max value use first i items can total weight is j, therefore:
+	dp[i][j] = max(dp[i-1][j-w[i]], dp[i-1]+v[i])
