@@ -3,5 +3,15 @@ Given N items, w[i] is the i-th item's weight, and v[i] is the i-th item's value
 Given a knapsack with weigth W, maximum the value within W. Items can only be used 1 or 0 times
 
 Algorithm:
-	set dp[i][j] as max value use first i items can total weight is j, therefore:
-	dp[i][j] = max(dp[i-1][j-w[i]], dp[i-1]+v[i])
+	set dp[i][j] as max value use first i items and total weight is j, therefore:
+	dp[i][j] = max{dp[i-1][j-w[i]]+v[i]} where w[i]<=j<=W
+
+
+Pesodu code:
+	class Knapsack_I(w, v, W, N) {
+		dp[][] = new int[N+1][W+1];
+		for i=1 to N:
+			for j=w[i] to W:
+				dp[i][j] = max(dp[i][j], dp[i-1][j-w[i]]+v[i])
+		return max(dp[N])
+	}
